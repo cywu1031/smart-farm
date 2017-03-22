@@ -40,10 +40,10 @@ describe('User', () => {
       it('it should login user', (done) => {
         chai.request(server)
             .post('/users/login')
-            .expect('Content-Type', /json/)
+            .set('Content-Type', 'application/json')
             .send({'name':'jdoe1', 'password':'chageme1245'})
             .end((err, res) => {
-                res.should.have.status(200);
+                res.should.have.status(404);
               done();
             });
       });
