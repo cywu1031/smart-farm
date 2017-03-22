@@ -33,4 +33,19 @@ describe('User', () => {
       });
   });
 
+  /*
+  * Test the /POST route
+  */
+  describe('/POST login', () => {
+      it('it should login user', (done) => {
+        chai.request(server)
+            .post('/users/login')
+            .send({'name':'jdoe1', 'password':'chageme1245'})
+            .end((err, res) => {
+                res.should.have.status(200);
+              done();
+            });
+      });
+  });
+
 });
